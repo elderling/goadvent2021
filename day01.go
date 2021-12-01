@@ -40,3 +40,18 @@ func ReadIntegersFromFile(filename string) []int {
 
 	return ints
 }
+
+func GetSlidingWindow(ints []int, i int) (sum int, ok bool) {
+	sum = 0
+	ok = true
+
+	if i > len(ints)-3 {
+		return 0, false
+	}
+
+	for j := i; j < i+3; j++ {
+		sum = sum + ints[j]
+	}
+
+	return sum, ok
+}
