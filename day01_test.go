@@ -24,3 +24,11 @@ func TestCountTotalIncreases(t *testing.T) {
 		t.Errorf("Got incorrect number of total expected 7 got %v", total)
 	}
 }
+
+func TestReadIntegersFromFile(t *testing.T) {
+	integers := ReadIntegersFromFile("test_data_day01a.txt")
+
+	if len(integers) != 3 {
+		t.Errorf("Got incorrect number of ints. Expected 3 got %v", len(integers))
+	}
+}
