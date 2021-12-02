@@ -55,3 +55,15 @@ func GetSlidingWindow(ints []int, i int) (sum int, ok bool) {
 
 	return sum, ok
 }
+
+func DepthsToSlidingDepths(ints []int) []int {
+	slidings := []int{}
+	for i := range ints {
+		sum, ok := GetSlidingWindow(ints, i)
+		if ok {
+			slidings = append(slidings, sum)
+		}
+	}
+
+	return slidings
+}
