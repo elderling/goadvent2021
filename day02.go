@@ -17,7 +17,14 @@ type SubmarineLocation struct {
 	depth         int
 }
 
-func (sl *SubmarineLocation) Day02aSolution() int {
+func (sl *SubmarineLocation) Day02aSolution(filename string) int {
+	commands := GetCommandsFromFile(filename)
+
+	for _, c := range commands {
+		subLoc := ParseSubmarineCommand(c)
+
+		sl.DoCommand(subLoc)
+	}
 	return sl.totalDistance * sl.depth
 }
 

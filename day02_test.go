@@ -6,11 +6,11 @@ import (
 
 func TestDay02aSolution(t *testing.T) {
 	finalLoc := &SubmarineLocation{
-		totalDistance: 10,
-		depth:         15,
+		totalDistance: 0,
+		depth:         0,
 	}
-	if finalLoc.Day02aSolution() != 150 {
-		t.Errorf("Wrong solution. Expected 150, got %v\n", finalLoc.Day02aSolution())
+	if finalLoc.Day02aSolution("test_data_day02a.txt") != 150 {
+		t.Errorf("Wrong solution. Expected 150, got %v\n", finalLoc.Day02aSolution("test_data_day02a.txt"))
 	}
 
 }
