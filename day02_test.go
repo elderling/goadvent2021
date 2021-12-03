@@ -30,3 +30,15 @@ func TestGetCommandsFromFile(t *testing.T) {
 	}
 
 }
+
+func TestParseSubmarineCommand(t *testing.T) {
+	subCommand := ParseSubmarineCommand("forward 5")
+
+	if subCommand.direction != "forward" {
+		t.Errorf("ParseSubmarineCommand parse error, direction: Expected %v, got %v", "forward", subCommand.direction)
+	}
+
+	if subCommand.distance != 5 {
+		t.Errorf("ParseSubmarineCommand parse error, direction: Expected %v, got %v", 5, subCommand.direction)
+	}
+}
