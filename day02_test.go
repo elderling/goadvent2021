@@ -5,8 +5,12 @@ import (
 )
 
 func TestDay02aSolution(t *testing.T) {
-	if Day02aSolution() != 150 {
-		t.Errorf("Wrong solution. Expected 150, got %v\n", Day02aSolution())
+	finalLoc := &SubmarineLocation{
+		totalDistance: 10,
+		depth:         15,
+	}
+	if finalLoc.Day02aSolution() != 150 {
+		t.Errorf("Wrong solution. Expected 150, got %v\n", finalLoc.Day02aSolution())
 	}
 
 }
@@ -41,4 +45,57 @@ func TestParseSubmarineCommand(t *testing.T) {
 	if subCommand.distance != 5 {
 		t.Errorf("ParseSubmarineCommand parse error, direction: Expected %v, got %v", 5, subCommand.direction)
 	}
+}
+
+func TestDoCommand(t *testing.T) {
+	command := &SubmarineCommand{
+		direction: "forward",
+		distance:  10,
+	}
+
+	loc := &SubmarineLocation{
+		totalDistance: 0,
+		depth:         0,
+	}
+
+	loc.DoCommand(command)
+
+	if loc.depth != 0 {
+		t.Errorf("bad depth")
+	}
+
+	if loc.totalDistance != 10 {
+		t.Errorf("bad distance")
+	}
+
+	command = &SubmarineCommand{
+		direction: "down",
+		distance:  1,
+	}
+
+	loc.DoCommand(command)
+
+	if loc.depth != 1 {
+		t.Errorf("bad depth")
+	}
+
+	if loc.totalDistance != 10 {
+		t.Errorf("bad distance")
+	}
+
+	command = &SubmarineCommand{
+		direction: "up",
+		distance:  1,
+	}
+
+	loc.DoCommand(command)
+
+	if loc.depth != 0 {
+		t.Errorf("bad depth")
+	}
+
+	if loc.totalDistance != 10 {
+		t.Errorf("bad distance")
+	}
+
 }

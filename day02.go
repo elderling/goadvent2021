@@ -12,8 +12,24 @@ type SubmarineCommand struct {
 	distance  int
 }
 
-func Day02aSolution() int {
-	return 0
+type SubmarineLocation struct {
+	totalDistance int
+	depth         int
+}
+
+func (sl *SubmarineLocation) Day02aSolution() int {
+	return sl.totalDistance * sl.depth
+}
+
+func (sl *SubmarineLocation) DoCommand(sc *SubmarineCommand) {
+	switch sc.direction {
+	case "forward":
+		sl.totalDistance = sl.totalDistance + sc.distance
+	case "up":
+		sl.depth = sl.depth - sc.distance
+	case "down":
+		sl.depth = sl.depth + sc.distance
+	}
 }
 
 func GetCommandsFromFile(filename string) []string {
