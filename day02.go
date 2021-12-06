@@ -15,10 +15,11 @@ type SubmarineCommand struct {
 type SubmarineLocation struct {
 	totalDistance int
 	depth         int
+	aim           int
 }
 
 func (sl *SubmarineLocation) Day02aSolution(filename string) int {
-	commands := GetCommandsFromFile(filename)
+	commands := GetStringsFromFile(filename)
 
 	for _, c := range commands {
 		subLoc := ParseSubmarineCommand(c)
@@ -39,7 +40,21 @@ func (sl *SubmarineLocation) DoCommand(sc *SubmarineCommand) {
 	}
 }
 
-func GetCommandsFromFile(filename string) []string {
+func (sl *SubmarineLocation) DoCommand2b(sc *SubmarineCommand) {
+	switch sc.direction {
+	case "forward":
+		{
+			sl.totalDistance = sl.totalDistance + sc.distance
+			sl.depth = sl.depth + sc.distance*sl.aim
+		}
+	case "up":
+		sl.aim = sl.aim - sc.distance
+	case "down":
+		sl.aim = sl.aim + sc.distance
+	}
+}
+
+func GetStringsFromFile(filename string) []string {
 
 	vals := []string{}
 

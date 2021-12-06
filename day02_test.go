@@ -15,7 +15,7 @@ func TestDay02aSolution(t *testing.T) {
 
 }
 
-func TestGetCommandsFromFile(t *testing.T) {
+func TestGetStringsFromFile(t *testing.T) {
 	expected := []string{
 		"forward 5",
 		"down 5",
@@ -25,7 +25,7 @@ func TestGetCommandsFromFile(t *testing.T) {
 		"forward 2",
 	}
 
-	commands := GetCommandsFromFile("test_data_day02a.txt")
+	commands := GetStringsFromFile("test_data_day02a.txt")
 
 	for i, val := range expected {
 		if commands[i] != val {
@@ -96,6 +96,53 @@ func TestDoCommand(t *testing.T) {
 
 	if loc.totalDistance != 10 {
 		t.Errorf("bad distance")
+	}
+
+}
+
+func TestDoCommand2b(t *testing.T) {
+	theStrings := []string{
+		"forward 5",
+		"down 5",
+		"forward 8",
+		"up 3",
+		"down 8",
+		"forward 2",
+	}
+
+	location := &SubmarineLocation{}
+
+	for i, v := range theStrings {
+		command := ParseSubmarineCommand(v)
+
+		location.DoCommand2b(command)
+
+		switch i {
+		case 0: // forward 5
+			if location.totalDistance != 5 && location.depth != 0 && location.aim != 0 {
+				t.Errorf("Command '%v' not executed properly", v)
+			}
+		case 1: // down 5
+			if location.totalDistance != 5 && location.depth != 0 && location.aim != 5 {
+				t.Errorf("Command '%v' not executed properly", v)
+			}
+		case 2: // forward 8
+			if location.totalDistance != 13 && location.depth != 40 && location.aim != 5 {
+				t.Errorf("Command '%v' not executed properly", v)
+			}
+		case 3: // up 3
+			if location.totalDistance != 13 && location.depth != 40 && location.aim != 2 {
+				t.Errorf("Command '%v' not executed properly", v)
+			}
+		case 4: // down 8
+			if location.totalDistance != 13 && location.depth != 40 && location.aim != 10 {
+				t.Errorf("Command '%v' not executed properly", v)
+			}
+		case 5: // forward 2
+			if location.totalDistance != 15 && location.depth != 60 && location.aim != 10 {
+				t.Errorf("Command '%v' not executed properly", v)
+			}
+		}
 	}
 
 }
