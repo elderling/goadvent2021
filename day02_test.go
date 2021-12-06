@@ -146,3 +146,13 @@ func TestDoCommand2b(t *testing.T) {
 	}
 
 }
+
+func TestDay2bSolution(t *testing.T) {
+	sl := &SubmarineLocation{}
+
+	sol := sl.Day02bSolution("test_data_day02a.txt")
+
+	if sol != 900 {
+		t.Errorf("Invalid solution. Expected 900, got: %v", sol)
+	}
+}

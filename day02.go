@@ -29,6 +29,17 @@ func (sl *SubmarineLocation) Day02aSolution(filename string) int {
 	return sl.totalDistance * sl.depth
 }
 
+func (sl *SubmarineLocation) Day02bSolution(filename string) int {
+	commands := GetStringsFromFile(filename)
+
+	for _, c := range commands {
+		subLoc := ParseSubmarineCommand(c)
+
+		sl.DoCommand2b(subLoc)
+	}
+	return sl.totalDistance * sl.depth
+}
+
 func (sl *SubmarineLocation) DoCommand(sc *SubmarineCommand) {
 	switch sc.direction {
 	case "forward":
