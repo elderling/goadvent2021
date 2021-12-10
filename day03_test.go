@@ -38,3 +38,38 @@ func TestReverseString(t *testing.T) {
 		t.Errorf("Failed to reverse 'abcdef' Got: '%v'", r)
 	}
 }
+
+func TestBinStringsToInts(t *testing.T) {
+	s := []string{
+		"00100",
+		"11110",
+		"10110",
+		"10111",
+		"10101",
+		"01111",
+		"00111",
+		"11100",
+		"10000",
+		"11001",
+		"00010",
+		"01010",
+	}
+
+	r := BinStringsToInts(s)
+
+	if r[0] != 4 {
+		t.Error("Conversion Error")
+	}
+}
+
+func TestBitAtPosition(t *testing.T) {
+	if !BitAtPosition(4, 2) {
+		t.Error("4,2 busted")
+	}
+	if !BitAtPosition(8, 3) {
+		t.Error("8,3 busted")
+	}
+	if !BitAtPosition(8+4, 2) {
+		t.Error("8+4,2 busted")
+	}
+}
