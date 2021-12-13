@@ -6,7 +6,37 @@ import (
 )
 
 func Day03aSolution(filename string) int {
-	return 198
+	var ones [64]int
+	var zeros [64]int
+	s := GetStringsFromFile(filename)
+
+	width := len(s[0])
+
+	n := BinStringsToInts(s)
+
+	for _, theInt := range n {
+		for pos := 0; pos < width; pos++ {
+			if BitAtPosition(theInt, pos) {
+				ones[pos]++
+			} else {
+				zeros[pos]++
+			}
+		}
+
+	}
+
+	gamma := 0
+	epsilon := 0
+	for pos := 0; pos < width; pos++ {
+		if ones[pos] > zeros[pos] {
+			gamma |= int(math.Exp2(float64(pos)))
+		} else {
+			epsilon |= int(math.Exp2(float64(pos)))
+
+		}
+	}
+
+	return gamma * epsilon
 }
 
 func ReverseString(s string) string {
