@@ -28,3 +28,24 @@ func (card *BingoCard) HasVerticalBingo() bool {
 
 	return maxRow == BINGO_CARD_ROWS
 }
+
+func (card *BingoCard) HasHorizontalBingo() bool {
+
+	maxColumn := 0
+
+	for i := 0; i < BINGO_CARD_COLS; i++ {
+		maxColumn = 0
+		for j := 0; j < BINGO_CARD_ROWS; j++ {
+			if card.marked[i][j] {
+				maxColumn++
+			} else {
+				break
+			}
+		}
+		if maxColumn == BINGO_CARD_COLS {
+			break
+		}
+	}
+
+	return maxColumn == BINGO_CARD_COLS
+}
