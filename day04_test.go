@@ -113,3 +113,17 @@ func TestParseCalledNumbers(t *testing.T) {
 		t.Error("didn't get 5")
 	}
 }
+
+func TestParseBingoCardLine(t *testing.T) {
+	testStr := " 6 10  3 18  5"
+
+	numSlice := ParseBingoCardLine(testStr)
+
+	if numSlice[0] != 6 {
+		t.Error("first field not parsed")
+	}
+
+	if numSlice[4] != 5 {
+		t.Error("last field not parsed")
+	}
+}

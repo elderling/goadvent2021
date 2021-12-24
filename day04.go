@@ -67,3 +67,16 @@ func ParseCalledNumbers(calledNumberLine string) (calledNumbers []int) {
 
 	return calledNumbers
 }
+
+func ParseBingoCardLine(line string) (lineNumbers []int) {
+	lineNumbers = make([]int, 5)
+
+	theStrings := strings.Fields(line)
+
+	for i, theNumber := range theStrings {
+		n, _ := strconv.Atoi(theNumber)
+		lineNumbers[i] = n
+	}
+
+	return lineNumbers
+}
