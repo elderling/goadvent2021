@@ -1,10 +1,15 @@
 package main
 
+import (
+	"strconv"
+	"strings"
+)
+
 const BINGO_CARD_ROWS = 5
 const BINGO_CARD_COLS = 5
 
 type BingoCard struct {
-	//numbers [BINGO_CARD_ROWS][BINGO_CARD_COLS]int
+	//numbers [5][5]int
 	marked [5][5]bool
 }
 
@@ -48,4 +53,17 @@ func (card *BingoCard) HasHorizontalBingo() bool {
 	}
 
 	return maxColumn == BINGO_CARD_COLS
+}
+
+func ParseCalledNumbers(calledNumberLine string) (calledNumbers []int) {
+
+	calledNumberStrings := strings.Split(calledNumberLine, ",")
+	calledNumbers = make([]int, len(calledNumberStrings))
+
+	for i, calledNumberString := range calledNumberStrings {
+		n, _ := strconv.Atoi(calledNumberString)
+		calledNumbers[i] = n
+	}
+
+	return calledNumbers
 }
