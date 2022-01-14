@@ -9,8 +9,8 @@ const BINGO_CARD_ROWS = 5
 const BINGO_CARD_COLS = 5
 
 type BingoCard struct {
-	//numbers [5][5]int
-	marked [5][5]bool
+	numbers [5][5]int
+	marked  [5][5]bool
 }
 
 func (card *BingoCard) HasVerticalBingo() bool {
@@ -79,4 +79,38 @@ func ParseBingoCardLine(line string) (lineNumbers []int) {
 	}
 
 	return lineNumbers
+}
+
+func ParseDay04aInputFile(filename string) []*BingoCard {
+	stringLines := GetStringsFromFile(filename)
+
+	bingoCards := make([]*BingoCard, 0)
+
+	//calledNumbers := ParseCalledNumbers(stringLines[0])
+
+	cardCounter := 0
+	bingoCard := &BingoCard{}
+	for i := 1; i < len(stringLines); i++ {
+
+		if stringLines[i] == "" {
+			continue
+		}
+
+		numSlice := ParseBingoCardLine(stringLines[i])
+
+		for n, val := range numSlice {
+			bingoCard.numbers[cardCounter][n] = val
+		}
+
+		cardCounter++
+
+		if cardCounter > 4 {
+			bingoCards = append(bingoCards, bingoCard)
+			cardCounter = 0
+			bingoCard = &BingoCard{}
+		}
+	}
+
+	return bingoCards
+
 }

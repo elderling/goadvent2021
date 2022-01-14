@@ -127,3 +127,11 @@ func TestParseBingoCardLine(t *testing.T) {
 		t.Error("last field not parsed")
 	}
 }
+
+func TestParseDay04aInputFile(t *testing.T) {
+	bingoCards := ParseDay04aInputFile("test_data_day04a.txt")
+
+	t.Error(bingoCards)
+
+	//fmt.Print(bingoCards)
+}
