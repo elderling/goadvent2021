@@ -136,6 +136,13 @@ func TestParseDay04aInputFile(t *testing.T) {
 	if testCard.numbers[2][1] != 8 {
 		t.Error("testCard.numbers[2][1] != 8!!!")
 	}
+}
 
-	//fmt.Print(bingoCards)
+func TestMarkNumberIfPresent(t *testing.T) {
+	card := &BingoCard{}
+	card.numbers[0][4] = 22
+	card.MarkNumberIfPresent(22)
+	if card.marked[0][4] != true {
+		t.Error("MarkNumberIfPresent is busted")
+	}
 }

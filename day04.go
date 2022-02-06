@@ -114,3 +114,15 @@ func ParseDay04aInputFile(filename string) []*BingoCard {
 	return bingoCards
 
 }
+
+func (card *BingoCard) MarkNumberIfPresent(theNumber int) {
+LAST:
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			if card.numbers[i][j] == theNumber {
+				card.marked[i][j] = true
+				break LAST
+			}
+		}
+	}
+}
