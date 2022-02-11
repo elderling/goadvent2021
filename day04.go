@@ -81,12 +81,12 @@ func ParseBingoCardLine(line string) (lineNumbers []int) {
 	return lineNumbers
 }
 
-func ParseDay04aInputFile(filename string) []*BingoCard {
+func ParseDay04aInputFile(filename string) ([]int, []*BingoCard) {
 	stringLines := GetStringsFromFile(filename)
 
 	bingoCards := make([]*BingoCard, 0)
 
-	//calledNumbers := ParseCalledNumbers(stringLines[0])
+	calledNumbers := ParseCalledNumbers(stringLines[0])
 
 	cardCounter := 0
 	bingoCard := &BingoCard{}
@@ -111,8 +111,7 @@ func ParseDay04aInputFile(filename string) []*BingoCard {
 		}
 	}
 
-	return bingoCards
-
+	return calledNumbers, bingoCards
 }
 
 func (card *BingoCard) MarkNumberIfPresent(theNumber int) {

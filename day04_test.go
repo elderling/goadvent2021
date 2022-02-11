@@ -129,8 +129,11 @@ func TestParseBingoCardLine(t *testing.T) {
 }
 
 func TestParseDay04aInputFile(t *testing.T) {
-	bingoCards := ParseDay04aInputFile("test_data_day04a.txt")
+	calledNumbers, bingoCards := ParseDay04aInputFile("test_data_day04a.txt")
 
+	if calledNumbers[2] != 9 {
+		t.Error("calledNumbers[2] != 9")
+	}
 	testCard := bingoCards[1]
 
 	if testCard.numbers[2][1] != 8 {
