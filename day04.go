@@ -142,6 +142,24 @@ LAST:
 	return returnCard, lastNumberCalled
 }
 
+func FindLastWinningCard(calledNumbers []int, cards []*BingoCard) (returnCard *BingoCard, lastNumberCalled int) {
+	alreadyWon := make(map[*BingoCard]bool)
+	for _, number := range calledNumbers {
+		for _, card := range cards {
+			if !alreadyWon[card] {
+				card.MarkNumberIfPresent(number)
+				if card.HasHorizontalBingo() || card.HasVerticalBingo() {
+					returnCard = card
+					lastNumberCalled = number
+					alreadyWon[card] = true
+				}
+			}
+		}
+	}
+
+	return returnCard, lastNumberCalled
+}
+
 func DoCardArithmetic(card *BingoCard, lastNumber int) (score int) {
 	for i := 0; i < 5; i++ {
 		for j := 0; j < 5; j++ {

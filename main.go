@@ -26,4 +26,9 @@ func main() {
 	winnerCard, lastNumberCalled := PlayCards(calledNumbers, bingoCards)
 	score := DoCardArithmetic(winnerCard, lastNumberCalled)
 	fmt.Printf("Day04a: Solution: %v\n", score)
+
+	score = DoCardArithmetic(FindLastWinningCard(ParseDay04aInputFile("my_day04a_data.txt")))
+
+	fmt.Printf("Day04b: Solution: %v\n", score)
+
 }

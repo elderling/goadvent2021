@@ -167,3 +167,19 @@ func TestPlayCards(t *testing.T) {
 		t.Error("DoCardArithmetic is broken")
 	}
 }
+
+func TestFindLastWinningCard(t *testing.T) {
+	calledNumbers, bingoCards := ParseDay04aInputFile("test_data_day04a.txt")
+
+	lastWinner, lastNumberCalled := FindLastWinningCard(calledNumbers, bingoCards)
+
+	score := DoCardArithmetic(lastWinner, lastNumberCalled)
+
+	if lastNumberCalled != 13 {
+		t.Errorf("lastNumberCalled should have been 13 but was %v", lastNumberCalled)
+	}
+
+	if score != 1924 {
+		t.Errorf("FindLastWinningCard() is broken %v should be 1924", score)
+	}
+}
