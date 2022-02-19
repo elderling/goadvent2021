@@ -153,9 +153,13 @@ func TestMarkNumberIfPresent(t *testing.T) {
 func TestPlayCards(t *testing.T) {
 	calledNumbers, bingoCards := ParseDay04aInputFile("test_data_day04a.txt")
 
-	winner := PlayCards(calledNumbers, bingoCards)
+	winner, lastNumberCalled := PlayCards(calledNumbers, bingoCards)
 
 	if winner.numbers[0][0] != 14 {
 		t.Error("PlayCards is busted")
+	}
+
+	if lastNumberCalled != 24 {
+		t.Error("PlayCards didn't identify last number called")
 	}
 }
