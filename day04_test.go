@@ -162,4 +162,8 @@ func TestPlayCards(t *testing.T) {
 	if lastNumberCalled != 24 {
 		t.Error("PlayCards didn't identify last number called")
 	}
+
+	if DoCardArithmetic(winner, lastNumberCalled) != 4512 {
+		t.Error("DoCardArithmetic is broken")
+	}
 }

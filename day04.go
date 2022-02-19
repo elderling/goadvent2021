@@ -141,3 +141,15 @@ LAST:
 
 	return returnCard, lastNumberCalled
 }
+
+func DoCardArithmetic(card *BingoCard, lastNumber int) (score int) {
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			if !card.marked[i][j] {
+				score += card.numbers[i][j]
+			}
+		}
+	}
+	score = score * lastNumber
+	return score
+}
