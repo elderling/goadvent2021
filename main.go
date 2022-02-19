@@ -21,4 +21,9 @@ func main() {
 	finalLoc.totalDistance = 0
 	finalLoc.depth = 0
 	fmt.Printf("Day02b: Solution: %v\n", finalLoc.Day02bSolution("my_day02a_data.txt"))
+
+	calledNumbers, bingoCards := ParseDay04aInputFile("my_day04a_data.txt")
+	winnerCard, lastNumberCalled := PlayCards(calledNumbers, bingoCards)
+	score := DoCardArithmetic(winnerCard, lastNumberCalled)
+	fmt.Printf("Day04a: Solution: %v\n", score)
 }
