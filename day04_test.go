@@ -149,3 +149,13 @@ func TestMarkNumberIfPresent(t *testing.T) {
 		t.Error("MarkNumberIfPresent is busted")
 	}
 }
+
+func TestPlayCards(t *testing.T) {
+	calledNumbers, bingoCards := ParseDay04aInputFile("test_data_day04a.txt")
+
+	winner := PlayCards(calledNumbers, bingoCards)
+
+	if winner.numbers[0][0] != 14 {
+		t.Error("PlayCards is busted")
+	}
+}

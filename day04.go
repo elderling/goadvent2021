@@ -125,3 +125,18 @@ LAST:
 		}
 	}
 }
+
+func PlayCards(calledNumbers []int, cards []*BingoCard) (returnCard *BingoCard) {
+LAST:
+	for _, number := range calledNumbers {
+		for _, card := range cards {
+			card.MarkNumberIfPresent(number)
+			if card.HasHorizontalBingo() || card.HasVerticalBingo() {
+				returnCard = card
+				break LAST
+			}
+		}
+	}
+
+	return returnCard
+}
