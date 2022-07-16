@@ -31,4 +31,7 @@ func main() {
 
 	fmt.Printf("Day04b: Solution: %v\n", score)
 
+	bad_spots := Day05aSolution("my_day05a_data.txt")
+	fmt.Printf("Day05a: Solution: %v\n", bad_spots)
+
 }
