@@ -83,3 +83,12 @@ func TestGepPointsInLine(t *testing.T) {
 		t.Error("not the right points")
 	}
 }
+
+func TestParseDay05aInputFile(t *testing.T) {
+	lines := ParsDay05aInputFile("test_data_day05a.txt")
+
+	if lines[0].i.x != 0 {
+		t.Error("read wrong")
+	}
+
+}

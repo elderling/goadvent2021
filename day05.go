@@ -34,13 +34,6 @@ func StringPointToPoint(s string) *Point {
 	return &Point{x: x, y: y}
 }
 
-/*
-func MarkLineOfVents(v *map[Point]int, l *Line) *map[Point]int {
-
-	return v
-}
-*/
-
 func GetPointsInLine(l *Line) []Point {
 
 	p := make([]Point, 0)
@@ -69,4 +62,15 @@ func GetPointsInLine(l *Line) []Point {
 	}
 
 	return p
+}
+
+func ParsDay05aInputFile(filename string) []Line {
+	stringLines := GetStringsFromFile(filename)
+	lines := make([]Line, 0)
+
+	for i := 0; i < len(stringLines); i++ {
+		lines = append(lines, *StringToLine(stringLines[i]))
+	}
+
+	return lines
 }
