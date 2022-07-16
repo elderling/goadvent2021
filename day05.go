@@ -64,7 +64,7 @@ func GetPointsInLine(l *Line) []Point {
 	return p
 }
 
-func ParsDay05aInputFile(filename string) []Line {
+func ParseDay05aInputFile(filename string) []Line {
 	stringLines := GetStringsFromFile(filename)
 	lines := make([]Line, 0)
 
@@ -73,4 +73,37 @@ func ParsDay05aInputFile(filename string) []Line {
 	}
 
 	return lines
+}
+
+func IsVerticalOrHorizontal(l Line) bool {
+	if l.i.x == l.j.x || l.i.y == l.j.y {
+		return true
+	}
+
+	return false
+}
+
+func Day05aSolution(filename string) int {
+	lines := ParseDay05aInputFile(filename)
+
+	m := make(map[Point]int)
+
+	for i, l := range lines {
+		if !IsVerticalOrHorizontal(l) {
+			continue
+		}
+		for _, n := range GetPointsInLine(&lines[i]) {
+			m[n]++
+		}
+	}
+
+	total := 0
+
+	for k := range m {
+		if m[k] > 1 {
+			total++
+		}
+	}
+
+	return total
 }
