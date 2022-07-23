@@ -34,4 +34,16 @@ func main() {
 	bad_spots := Day05aSolution("my_day05a_data.txt")
 	fmt.Printf("Day05a: Solution: %v\n", bad_spots)
 
+	fish := ReadFishFromFile("my_day06a_data.txt")
+	fish = FishDays(fish, 80)
+	total_fish := len(fish)
+	fmt.Printf("Day06a: Solution: %v\n", total_fish)
+
+	/*
+		fish2 := ReadFishFromFile("my_day06a_data.txt")
+		fish2 = FishDays(fish2, 256)
+		total_fish2 := len(fish2)
+		fmt.Printf("Day06b: Solution: %v\n", total_fish2)
+	*/
+
 }
