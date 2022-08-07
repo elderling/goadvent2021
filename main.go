@@ -39,11 +39,8 @@ func main() {
 	total_fish := len(fish)
 	fmt.Printf("Day06a: Solution: %v\n", total_fish)
 
-	/*
-		fish2 := ReadFishFromFile("my_day06a_data.txt")
-		fish2 = FishDays(fish2, 256)
-		total_fish2 := len(fish2)
-		fmt.Printf("Day06b: Solution: %v\n", total_fish2)
-	*/
+	fishb := ReadFishFromFile("my_day06a_data.txt")
+	bucket := FishToFishBucket(fishb)
+	fmt.Printf("Day06b: Solution: %v\n", SolutionDay06b(bucket, 256))
 
 }

@@ -41,3 +41,33 @@ func TestFishDays(t *testing.T) {
 		t.Error("Something's broken with FishDays")
 	}
 }
+
+func TestFishToFishBucket(t *testing.T) {
+	bucket := FishToFishBucket([]int{3, 4, 3, 2})
+
+	if bucket[3] != 2 {
+		t.Error("bucket 3 broken")
+	}
+}
+
+func TestCountFishInBucket(t *testing.T) {
+	bucket := FishToFishBucket([]int{3, 4, 3, 2})
+	total := CountFishInBucket(bucket)
+
+	if total != 4 {
+		t.Error("wrong number of fish")
+	}
+
+}
+
+func TestSolutionDay06b(t *testing.T) {
+	bucket := FishToFishBucket([]int{3, 4, 3, 1, 2})
+
+	if SolutionDay06b(bucket, 18) != 26 {
+		t.Error("Nope on SolutionDay06b")
+	}
+
+	if SolutionDay06b(bucket, 80) != 5934 {
+		t.Error("Nope on SolutionDay06b")
+	}
+}
