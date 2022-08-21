@@ -43,4 +43,6 @@ func main() {
 	bucket := FishToFishBucket(fishb)
 	fmt.Printf("Day06b: Solution: %v\n", SolutionDay06b(bucket, 256))
 
+	fmt.Printf("Day07a: Solution: %v\n", SolutionDay07a(ReadCommaSeparatedFromFile("my_day07a_data.txt")))
+
 }
